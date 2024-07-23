@@ -9,6 +9,7 @@ int main()
 {
     // Point 예제
     Point pt1;
+    // Point2i pt1;
     pt1.x = 5;
     pt1.y = 10;
     Point pt2(6, 7);
