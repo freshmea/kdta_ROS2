@@ -15,8 +15,7 @@ int main()
     Scalar red = Scalar(0, 0, 255);
     Mat img(400, 600, CV_8UC3, Scalar(255, 255, 255));
 
-    Ptr<freetype::FreeType2> ft2 = freetype::createFreeType2(); // smart pointer
-    // ft2->loadFontData("/usr/share/fonts/truetype/nanum/NanumGothic.ttf", 0); // 개인사정에 맞게
+    Ptr<freetype::FreeType2> ft2 = freetype::createFreeType2();              // smart pointer
     ft2->loadFontData("/usr/share/fonts/truetype/nanum/NanumGothic.ttf", 0); // 개인사정에 맞게
     String text = u8"안녕하세요. utf-8 텍스트입니다.";
     int fontHeight = 60;
