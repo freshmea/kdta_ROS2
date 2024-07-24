@@ -11,7 +11,7 @@ int main()
     Mat img1;
     img1 = Scalar(10, 0, 0);
     Mat img2(400, 600, CV_8UC1);
-    Mat img3(400, 600, CV_8UC3);
+    Mat img3(400, 600, CV_8UC3); // 파란색으로 만드세요.
     Mat img4(Size(500, 500), CV_8UC3);
 
     Mat img5(300, 400, CV_8UC1, Scalar(0));
