@@ -12,6 +12,8 @@ int main()
     // VideoCapture cap(0, CAP_V4L2);
     double fps = cap.get(CAP_PROP_FPS);
     int delay = cvRound(1000 / fps);
+    Size sz1(cap.get(CAP_PROP_FRAME_WIDTH), cap.get(CAP_PROP_FRAME_HEIGHT));
+    std::vector<int> shape = {sz1.height * 2, sz1.width / 2};
 
     // open check
     if (!cap.isOpened())
@@ -25,7 +27,13 @@ int main()
     while (true)
     {
         cap >> frame;
+        resize(frame, doubleFrame, sz1 * 2);
+        reshapeFrame = frame.reshape(3, shape);
+
         imshow("frame", frame);
+        imshow("doubleframe", doubleFrame);
+        imshow("rashape", reshapeFrame);
+
         if (waitKey(delay) == 27)
             break;
     }
