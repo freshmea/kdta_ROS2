@@ -18,7 +18,7 @@
   - vscode 설치
   - github 연동
 - 3 차시
-
+  - 주요 클래스 Point, Size, Rect, Scalar
 
 ---
 
@@ -26,7 +26,13 @@
 
 ---
 
-- 1 차시
+- 주요 클래스 마무리
+  - Mat 클래스
+- ch04
+  - 비디오 캡쳐
+  - 비디오 파일 저장
+  - line, rectangle, circle, ellipse, polylines, fillPoly, putText 함수
+  - 키보드 이벤트 처리
 
 ---
 
@@ -38,6 +44,11 @@
   - 복습
   - mouse callback 함수 작성
 - 2 차시
-  - image callback 함수 작성
-  - camera info callback 함수 작성
-  - 
+  - 트랙바 설정
+  - 트랙바 콜백 함수 작성
+- 3 차시
+  - 파일스토리지 사용법
+  - 마스트 연산
+- 4 차시
+  - 종합 과제 - 마우스 따라 다니는 사각형
+- 5 차시
