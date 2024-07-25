@@ -18,3 +18,26 @@
   - vscode 설치
   - github 연동
 - 3 차시
+
+
+---
+
+## 2024-07-24
+
+---
+
+- 1 차시
+
+---
+
+## 2024-07-25
+
+---
+
+- 1 차시
+  - 복습
+  - mouse callback 함수 작성
+- 2 차시
+  - image callback 함수 작성
+  - camera info callback 함수 작성
+  - 
