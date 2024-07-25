@@ -5,6 +5,7 @@
         "*.world": "xml",
         "*.xacro": "xml",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "random": "cpp"
     }
 }
