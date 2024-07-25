@@ -7,27 +7,22 @@ String folder = "/home/aa/kdta_ROS2/opencv/data/";
 
 int main()
 {
-    Mat src = imread(folder + "lenna.bmp", IMREAD_GRAYSCALE);
-    src = src + (src - 125) * 1.0;
-    Mat histo;
-    int channels[] = {0};
-    int dims = 1;
-    const int histSize[] = {256};
-    float graylevel[] = {0, 256};
-    const float *ranges[] = {graylevel};
+    Mat src = imread(folder + "hawkes.bmp", IMREAD_GRAYSCALE);
+    // src = src + (src - 125) * 1.0;
+    Mat add, center, minmaxDst, dst;
+    double gmin, gmax;
 
-    calcHist(&src, 1, channels, noArray(), histo, dims, histSize, ranges);
+    add = src + 50;
+    center = src + (src - 125) * 1.0;
+    minMaxLoc(src, &gmin, &gmax);
+    minmaxDst = (src - gmin) * 255 / (gmax - gmin);
+    equalizeHist(src, dst);
+
     imshow("src", src);
-
-    // make graph
-    Mat graph(100, 256, CV_8U, Scalar(255));
-    normalize(histo, histo, 0, 100, NORM_MINMAX);
-    for (int i = 0; i < 256; i++)
-    {
-        line(graph, Point(i, 100), Point(i, 100 - cvRound(histo.at<float>(i))), Scalar(0));
-    }
-
-    imshow("graph", graph);
+    imshow("dst", dst);
+    imshow("add", add);
+    imshow("center", center);
+    imshow("minmax", minmaxDst);
     waitKey(0);
     return 0;
 }
