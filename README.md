@@ -6,10 +6,10 @@
 - ubuntu 설치 후 OpenCV 설치
 
 ```bash
-sudo apt-get install build-essential cmake git pkg-config
 sudo apt update 
 sudo apt upgrade
 sudo apt install libopencv-dev python3-opencv
+sudo apt-get install build-essential cmake git pkg-config
 '''
 
 - OpenCV 설치 후 추가 작업
