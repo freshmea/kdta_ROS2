@@ -8,5 +8,6 @@
         "iostream": "cpp",
         "random": "cpp"
     },
-    "ros.distro": "humble"
+    "ros.distro": "humble",
+    "cmake.sourceDirectory": "/home/aa/kdta_ROS2/opencv/ch02"
 }
