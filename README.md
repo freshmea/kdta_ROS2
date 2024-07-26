@@ -3,6 +3,27 @@
 - 공유 슬라이드
 [링크](https://docs.google.com/presentation/d/1453nx14DVMk0nBLW7jpt0g6x7a7z2wuNaJKmcVQi4rw/edit?usp=sharing)
 
+- ubuntu 설치 후 OpenCV 설치
+
+```bash
+sudo apt update 
+sudo apt upgrade
+sudo apt install libopencv-dev python3-opencv
+'''
+
+- OpenCV 설치 후 추가 작업
+```bash
+sudo apt-get install build-essential cmake git pkg-config
+sudo apt-get install libjpeg-dev libtiff5-dev libpng-dev
+sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+sudo apt-get install libxvidcore-dev libx264-dev
+sudo apt-get install libgtk-3-dev
+sudo apt-get install libatlas-base-dev gfortran
+sudo apt-get install python3-dev
+sudo apt-get install python3-pip
+pip3 install numpy
+```
+
 ---
 
 ## 2024-07-23
