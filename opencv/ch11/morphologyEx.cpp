@@ -16,8 +16,7 @@ int main()
     morphologyEx(bin, dst2, MORPH_CLOSE, Mat());
     morphologyEx(bin, dst3, MORPH_GRADIENT, Mat());
     morphologyEx(bin, dst4, MORPH_TOPHAT, Mat());
-    // morphologyEx(bin, dst5, MORPH_BLACKHAT, Mat());
-    // morphologyEx(bin, dst6, MORPH_HITMISS, Mat());
+    morphologyEx(bin, dst5, MORPH_BLACKHAT, Mat());
 
     imshow("img", img);
     imshow("bin", bin);
@@ -25,8 +24,7 @@ int main()
     imshow("dst2", dst2);
     imshow("dst3", dst3);
     imshow("dst4", dst4);
-    // imshow("dst5", dst5);
-    // imshow("dst6", dst6);
+    imshow("dst5", dst5);
     waitKey(0);
     return 0;
 }
