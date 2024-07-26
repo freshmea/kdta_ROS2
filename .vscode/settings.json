@@ -7,5 +7,6 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "random": "cpp"
-    }
+    },
+    "ros.distro": "humble"
 }
