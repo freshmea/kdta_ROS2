@@ -52,3 +52,17 @@
 - 4 차시
   - 종합 과제 - 마우스 따라 다니는 사각형
 - 5 차시
+
+---
+
+## 2024-07-26
+
+---
+
+- 1차시
+  - 복습
+  - affine transformation
+- 2차시
+  - warpaffine
+  - affineRotation - 트랙바 연결 예제 작성
+- 
