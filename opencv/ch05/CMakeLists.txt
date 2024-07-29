@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(windows)
+project(opencv_example_05)
 
 find_package(OpenCV REQUIRED)
 file(GLOB SOURCES "*.cpp")

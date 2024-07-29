@@ -1,0 +1,71 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "디렉토리 내용 삭제",
+            "command": "rm",
+            "args": [
+                "-rf",
+                // "${workspaceFolder}/build",
+                "${fileDirname}/build",
+            ],
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "디렉토리 생성",
+            "command": "mkdir",
+            "args": [
+                "-p",
+                "${fileDirname}/build"
+                // "${workspaceFolder}/build"
+            ],
+            "group": "build",
+            "dependsOn": ["디렉토리 내용 삭제"]
+        },
+        {
+            "type": "shell",
+            "label": "cmake 실행",
+            "command": "cmake",
+            "args": [
+                "--no-warn-unused-cli",
+                "-DCMAKE_BUILD_TYPE:STRING=Debug",
+                "-DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE",
+                "${fileDirname}",
+                ".",
+                "-G",
+                "Unix Makefiles",
+            ],
+            "options": {
+                "cwd": "${fileDirname}/build",
+                // "cwd": "${workspaceFolder}/build",
+            },
+            "group": "build",
+            "dependsOn": ["디렉토리 생성"]
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++ 활성 파일 빌드",
+            "command": "make",
+            "args": [
+                "all"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "options": {
+                // "cwd": "${workspaceFolder}/build",
+                "cwd": "${fileDirname}/build",
+            },
+            "dependsOn": [
+                "cmake 실행"
+            ],
+            "detail": "디버거에서 생성된 작업입니다.",
+        },
+    ],
+    "version": "2.0.0"
+}

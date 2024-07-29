@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-project(HelloWorld)
+project(opencv_example_helloworld)
 
 find_package(OpenCV REQUIRED)
 
