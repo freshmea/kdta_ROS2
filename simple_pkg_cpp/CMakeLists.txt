@@ -9,9 +9,13 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(OpenCV REQUIRED)
 
 # excutable
 add_executable(helloword src/helloworld.cpp)
+
+add_executable(helloOpenCV src/helloOpenCV.cpp)
+target_link_libraries(helloOpenCV ${OpenCV_LIBS})
 
 #install
 install(TARGETS
