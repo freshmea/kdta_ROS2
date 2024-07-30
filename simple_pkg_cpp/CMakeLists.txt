@@ -20,11 +20,15 @@ target_link_libraries(helloOpenCV ${OpenCV_LIBS})
 add_executable(hello_publisher src/hello_publisher.cpp)
 ament_target_dependencies(hello_publisher rclcpp std_msgs)
 
+add_executable(hello_publisher2 src/hello_publisher2.cpp)
+ament_target_dependencies(hello_publisher2 rclcpp std_msgs)
+
 #install
 install(TARGETS
   helloword
   helloOpenCV
   hello_publisher
+  hello_publisher2
   DESTINATION lib/${PROJECT_NAME}
 )
 
