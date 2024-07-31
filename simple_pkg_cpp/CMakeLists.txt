@@ -23,12 +23,16 @@ ament_target_dependencies(hello_publisher rclcpp std_msgs)
 add_executable(hello_publisher2 src/hello_publisher2.cpp)
 ament_target_dependencies(hello_publisher2 rclcpp std_msgs)
 
+add_executable(hello_publisher_class src/hello_publisher_class.cpp)
+ament_target_dependencies(hello_publisher_class rclcpp std_msgs)
+
 #install
 install(TARGETS
   helloword
   helloOpenCV
   hello_publisher
   hello_publisher2
+  hello_publisher_class
   DESTINATION lib/${PROJECT_NAME}
 )
 
