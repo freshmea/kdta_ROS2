@@ -9,7 +9,7 @@ using namespace std::chrono_literals;
 class Msub2 : public rclcpp::Node
 {
 public:
-    Msub2() : Node("msub")
+    Msub2() : Node("msub2")
     {
         auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
         _sub = this->create_subscription<std_msgs::msg::String>("message2", qos_profile, std::bind(&Msub2::sub_helloworld_msg, this, std::placeholders::_1));
