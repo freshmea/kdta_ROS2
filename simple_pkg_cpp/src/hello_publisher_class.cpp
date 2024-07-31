@@ -19,7 +19,8 @@ public:
 
 private:
     int _i;
-    std::shared_ptr<rclcpp::Publisher<std_msgs::msg::String, std::allocator<void>>> _pub;
+    // std::shared_ptr<rclcpp::Publisher<std_msgs::msg::String, std::allocator<void>>> _pub;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _pub;
     rclcpp::TimerBase::SharedPtr _timer;
     void publish_helloworld_msg()
     {
