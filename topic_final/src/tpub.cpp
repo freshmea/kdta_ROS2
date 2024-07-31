@@ -13,7 +13,7 @@ public:
         : Node("tpub"), _i(0)
     {
         auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
-        _pub = this->create_publisher<std_msgs::msg::Header>("tpub", qos_profile);
+        _pub = this->create_publisher<std_msgs::msg::Header>("time", qos_profile);
         _timer = this->create_wall_timer(1s, std::bind(&TimePub::publish_time_msg, this));
         _clock = rclcpp::Clock(RCL_ROS_TIME);
     }

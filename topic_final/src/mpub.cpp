@@ -13,19 +13,22 @@ public:
         : Node("mpub"), _i(0)
     {
         auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
-        _pub = this->create_publisher<std_msgs::msg::String>("helloworld", qos_profile);
+        _pub = this->create_publisher<std_msgs::msg::String>("message1", qos_profile);
+        _pub2 = this->create_publisher<std_msgs::msg::String>("message2", qos_profile);
         _timer = this->create_wall_timer(1s, std::bind(&MessagePub::publish_helloworld_msg, this));
     }
 
 private:
     int _i;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _pub;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _pub2;
     rclcpp::TimerBase::SharedPtr _timer;
     void publish_helloworld_msg()
     {
         auto msg = std_msgs::msg::String();
         msg.data = "from mpub!" + to_string(_i);
         _pub->publish(msg);
+        _pub2->publish(msg);
         _i++;
     }
 };
