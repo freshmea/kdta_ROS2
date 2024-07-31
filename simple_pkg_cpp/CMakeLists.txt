@@ -32,6 +32,9 @@ ament_target_dependencies(hello_publisher_class rclcpp std_msgs)
 add_executable(hello_publisher_class2 src/hello_publisher_class2.cpp src/publisher.cpp)
 ament_target_dependencies(hello_publisher_class2 rclcpp std_msgs)
 
+add_executable(hello_subscriber_class src/hello_subscriber_class.cpp src/subscriber.cpp)
+ament_target_dependencies(hello_subscriber_class rclcpp std_msgs)
+
 #install
 install(TARGETS
   helloword
@@ -40,6 +43,7 @@ install(TARGETS
   hello_publisher2
   hello_publisher_class
   hello_publisher_class2
+  hello_subscriber_class
   DESTINATION lib/${PROJECT_NAME}
 )
 

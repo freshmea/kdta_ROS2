@@ -6,7 +6,7 @@
                 "/usr/include/**",
                 "/opt/ros/humble/include/**",
                 "~/kdta_ws/src/**",
-                "/home/aa/kdta_ws/src/kdta_ROS2/moveTSim/include/**",
+                "/home/aa/kdta_ws/src/kdta_ROS2/moveTSim/include/**"
             ],
             "intelliSenseMode": "linux-gcc-x64",
             "compilerPath": "/usr/bin/clang",
