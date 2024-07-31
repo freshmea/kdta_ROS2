@@ -6,7 +6,10 @@
         "*.xacro": "xml",
         "ostream": "cpp",
         "iostream": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "*.ipp": "cpp",
+        "bitset": "cpp",
+        "string_view": "cpp"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/kdta_ROS2/opencv/ch02",

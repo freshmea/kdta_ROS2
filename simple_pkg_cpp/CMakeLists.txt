@@ -11,6 +11,9 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 
+# include directories
+include_directories(include)
+
 # excutable
 add_executable(helloword src/helloworld.cpp)
 
@@ -26,6 +29,9 @@ ament_target_dependencies(hello_publisher2 rclcpp std_msgs)
 add_executable(hello_publisher_class src/hello_publisher_class.cpp)
 ament_target_dependencies(hello_publisher_class rclcpp std_msgs)
 
+add_executable(hello_publisher_class2 src/hello_publisher_class2.cpp src/publisher.cpp)
+ament_target_dependencies(hello_publisher_class2 rclcpp std_msgs)
+
 #install
 install(TARGETS
   helloword
@@ -33,6 +39,7 @@ install(TARGETS
   hello_publisher
   hello_publisher2
   hello_publisher_class
+  hello_publisher_class2
   DESTINATION lib/${PROJECT_NAME}
 )
 

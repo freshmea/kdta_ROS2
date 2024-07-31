@@ -4,7 +4,8 @@
             "name": "kdta_ros2",
             "includePath": [
                 "/usr/include/**",
-                "/opt/ros/humble/include/**"
+                "/opt/ros/humble/include/**",
+                "~/kdta_ws/src/**"
             ],
             "intelliSenseMode": "linux-gcc-x64",
             "compilerPath": "/usr/bin/clang",
