@@ -109,3 +109,63 @@ pip3 install numpy
   - 캐니 엣지 검출
 - 4차시
   - 허프변환
+
+---
+
+## 2024-07-30
+
+---
+
+- ROS2 시작
+- ROS2 개념
+  - 노드
+  - 토픽
+  - 메시지
+  - 런처
+  - 노드 통신
+  - 노드 실행
+- ROS2 설치
+  - ROS2 humble 설치
+  - ros2 humble documentation debian installation
+  - 환경 설정 파일
+    - .bashrc
+      - source /opt/ros/humble/setup.bash
+      - source ~/xxx_ws/install/local_setup.bash
+      - 여러가지 alias 설정
+      - export ROS_DOMAIN_ID 설정
+- 패키지 작성
+  - kdta_ws
+    - simple_pkg_cpp
+      - xml 수정
+      - CMakeLists.txt 수정
+      - 노드 추가
+        - helloword.cpp : 기본 main 코드
+        - helloOpenCV.cpp : OpenCV 사용 코드(외부 라이브러리 적용)
+        - hellow_publisher : Node 및 spin timer 적용
+        - hellow_publisher_class : Node 상속 클래스 적용
+
+---
+
+## 2024-07-31
+
+---
+
+- 복습
+- 패키지 작성 (이어서)
+  - kdta_ws
+    - simple_pkg_cpp 패키지
+      - 노드 추가
+        - hellow_publisher_class2 : 분할컴파일 (해더, 메인, CPP)
+        - hellow_subscriber : subscriber 노드
+        - time_publisher_class : timer 노드
+        - time_subscriber : timer subscriber 노드
+    - move_t_sim 패키지
+      - 노드 추가
+        - moveTurtleSim.cpp : 터틀심 이동 노드( turtle1, turtle2 동시 이동)
+- 최종 실습(Topic)
+  - 5개 노드 3개 Topic 사용
+    - 노드 : mpub, msub, msub2, tpub, mtsub
+    - Topic :
+      - /message1: String ( mpub -> msub, mtsub)
+      - /message2: String ( mpub -> msub2)
+      - /time: Header ( tpub -> mtsub)
