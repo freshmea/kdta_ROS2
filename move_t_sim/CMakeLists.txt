@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 
 include_directories(include)
 
@@ -16,9 +17,13 @@ include_directories(include)
 add_executable(moveTurtleSim src/moveTurtleSim.cpp src/moveTurtle.cpp)
 ament_target_dependencies(moveTurtleSim rclcpp geometry_msgs)
 
+add_executable(moveTurtleBot src/moveTurtleBot.cpp src/moveTurtleBotcpp.cpp)
+ament_target_dependencies(moveTurtleBot rclcpp geometry_msgs nav_msgs)
+
 #install
 install(TARGETS
   moveTurtleSim
+  moveTurtleBot
   DESTINATION lib/${PROJECT_NAME}
 )
 
