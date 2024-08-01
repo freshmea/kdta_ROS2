@@ -22,6 +22,7 @@ private:
     rclcpp::TimerBase::SharedPtr _timer;
     void publish_turtlesim_msg();
     void sub_odom_msg(const nav_msgs::msg::Odometry::SharedPtr msg);
+    nav_msgs::msg::Odometry _odom_msg;
 };
 
 #endif // MOVETURTLEBOT_HPP

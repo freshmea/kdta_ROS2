@@ -12,9 +12,14 @@ MoveTurtleBot::MoveTurtleBot()
 
 void MoveTurtleBot::publish_turtlesim_msg()
 {
+    auto twist = geometry_msgs::msg::Twist();
+    twist.linear.x = 0.1;
+    twist.angular.z = 1.0;
+    _twist_pub->publish(twist);
 }
 
 void MoveTurtleBot::sub_odom_msg(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
-    RCLCPP_INFO(get_logger(), "I heard: [%f]", msg->twist.twist.linear.x);
+    _odom_msg = *msg;
+    RCLCPP_INFO(get_logger(), "Position(x: %f, y: %f, z: %f)", _odom_msg.pose.pose.position.x, _odom_msg.pose.pose.position.y, _odom_msg.pose.pose.position.z);
 }
