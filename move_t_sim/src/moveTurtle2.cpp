@@ -84,7 +84,7 @@ void MoveTurtlesim::publish_turtlesim_msg()
         }
         else
         {
-            _i++;
+            _i = 0;
         }
         break;
     }
