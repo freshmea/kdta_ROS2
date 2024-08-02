@@ -47,6 +47,10 @@ ament_target_dependencies(simple_service_server rclcpp std_msgs example_interfac
 
 add_executable(simple_service_client src/simple_service_client.cpp)
 ament_target_dependencies(simple_service_client rclcpp std_msgs example_interfaces)
+
+add_executable(simple_service_client2 src/simple_service_client2.cpp)
+ament_target_dependencies(simple_service_client2 rclcpp std_msgs example_interfaces)
+
 #install
 install(TARGETS
   helloword
@@ -60,6 +64,7 @@ install(TARGETS
   time_subscriber_class
   simple_service_server
   simple_service_client
+  simple_service_client2
   DESTINATION lib/${PROJECT_NAME}
 )
 
