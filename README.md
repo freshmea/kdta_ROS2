@@ -172,7 +172,7 @@ pip3 install numpy
 
 ---
 
-## 2024-07-31
+## 2024-08-01
 
 ---
 
@@ -222,3 +222,13 @@ pip3 install numpy
   - moveTurtleSim2.cpp 작성
   - 빌드 후 실행(터틀봇3)
     - `ros2 run move_t_sim moveTurtleSim2`
+
+
+---
+
+## 2024-08-02
+
+---
+
+- 복습
+- 터틀심 사각형 움직임 구현 -> 터틀봇 용 코드로 변경
