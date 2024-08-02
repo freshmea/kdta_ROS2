@@ -232,3 +232,23 @@ pip3 install numpy
 
 - 복습
 - 터틀심 사각형 움직임 구현 -> 터틀봇 용 코드로 변경
+  - moveTurtleBot2.cpp 작성
+  - 세부 알고리즘 변경
+- 사용자 인터페이스 작성
+  - srv/AddTwoInt.srv 파일 작성
+- Service 노드 추가
+  - Service server 노드
+  - Service client 노드1
+    - spin_until_done 사용
+  - Service client 노드2
+    - spin 사용 후 callback 사용
+- 파라미터 
+  - 파라미터 기초
+    - ros2 param get /node_name param_name
+    - ros2 param set /node_name param_name param_value
+    - ros2 param list /node_name
+    - ros2 param dump /node_name
+    - ros2 param load /node_name
+- Launch 파일 작성
+  - topic_final 에 추가
+- 
