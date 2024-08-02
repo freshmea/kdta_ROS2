@@ -95,6 +95,10 @@ void MoveTurtleBot::sub_odom_msg(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
     _odom_msg = *msg;
     tf2::Quaternion q(_odom_msg.pose.pose.orientation.x, _odom_msg.pose.pose.orientation.y, _odom_msg.pose.pose.orientation.z, _odom_msg.pose.pose.orientation.w);
-    _theta = q.getAngle() * 2 - 3.141592;
+
+    // _theta = q.getAngle() * 2 - 3.141592;
+    double _roll, _pitch, _yaw;
+    tf2::Matrix3x3(q).getRPY(_roll, _pitch, _yaw);
+    _theta = _yaw;
     RCLCPP_INFO(get_logger(), "Position(x: %f, y: %f, z: %f, theta: %f)", _odom_msg.pose.pose.position.x, _odom_msg.pose.pose.position.y, _odom_msg.pose.pose.position.z, _theta);
 }
