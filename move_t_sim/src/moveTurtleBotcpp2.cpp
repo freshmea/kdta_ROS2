@@ -16,11 +16,23 @@ void MoveTurtleBot::publish_turtlesim_msg()
     switch (_i)
     {
     case 0:
-        if (_odom_msg.pose.pose.position.x < 0.3)
+        if (_odom_msg.pose.pose.position.x < 0.3 && _theta > -0.1 && _theta < 0.1)
         {
             // 직진
             msg.linear.x = 0.1;
             msg.angular.z = 0.0;
+        }
+        else if (_odom_msg.pose.pose.position.x < 0.3 && _theta < -0.1)
+        {
+            // 회전
+            msg.linear.x = 0.0;
+            msg.angular.z = 0.3;
+        }
+        else if (_odom_msg.pose.pose.position.x < 0.3 && _theta > 0.1)
+        {
+            // 회전
+            msg.linear.x = 0.0;
+            msg.angular.z = -0.3;
         }
         else if (_theta < 1.57)
         {
@@ -34,11 +46,23 @@ void MoveTurtleBot::publish_turtlesim_msg()
         }
         break;
     case 1:
-        if (_odom_msg.pose.pose.position.y < 0.3)
+        if (_odom_msg.pose.pose.position.y < 0.3 && _theta > 1.47 && _theta < 1.67)
         {
             // 직진
             msg.linear.x = 0.1;
             msg.angular.z = 0.0;
+        }
+        else if (_odom_msg.pose.pose.position.y < 0.3 && _theta < 1.47)
+        {
+            // 회전
+            msg.linear.x = 0.0;
+            msg.angular.z = 0.3;
+        }
+        else if (_odom_msg.pose.pose.position.y < 0.3 && _theta > 1.67)
+        {
+            // 회전
+            msg.linear.x = 0.0;
+            msg.angular.z = -0.3;
         }
         else if (_theta < 3.14 && _theta > 0)
         {
@@ -52,11 +76,29 @@ void MoveTurtleBot::publish_turtlesim_msg()
         }
         break;
     case 2:
-        if (_odom_msg.pose.pose.position.x > 0)
+        if (_odom_msg.pose.pose.position.x > 0 && _theta > 3.04)
         {
             // 직진
             msg.linear.x = 0.1;
             msg.angular.z = 0.0;
+        }
+        else if (_odom_msg.pose.pose.position.x > 0 && _theta < -3.04)
+        {
+            // 직진
+            msg.linear.x = 0.1;
+            msg.angular.z = 0.0;
+        }
+        else if (_odom_msg.pose.pose.position.x > 0 && _theta < 3.04)
+        {
+            // 회전
+            msg.linear.x = 0.0;
+            msg.angular.z = 0.3;
+        }
+        else if (_odom_msg.pose.pose.position.x > 0 && _theta > -3.04)
+        {
+            // 회전
+            msg.linear.x = 0.0;
+            msg.angular.z = -0.3;
         }
         else if (_theta < -1.57)
         {
@@ -70,11 +112,23 @@ void MoveTurtleBot::publish_turtlesim_msg()
         }
         break;
     case 3:
-        if (_odom_msg.pose.pose.position.y > 0)
+        if (_odom_msg.pose.pose.position.y > 0 && _theta < -1.47 && _theta > -1.67)
         {
             // 직진
             msg.linear.x = 0.1;
             msg.angular.z = 0.0;
+        }
+        else if (_odom_msg.pose.pose.position.y > 0 && _theta < -1.67)
+        {
+            // 회전
+            msg.linear.x = 0.0;
+            msg.angular.z = 0.3;
+        }
+        else if (_odom_msg.pose.pose.position.y > 0 && _theta > -1.47)
+        {
+            // 회전
+            msg.linear.x = 0.0;
+            msg.angular.z = -0.3;
         }
         else if (_theta < 0)
         {
