@@ -13,8 +13,8 @@ public:
     SimpleServiceServer()
         : Node("addTwoInt_server"), _i(0)
     {
-        auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
-        _service = this->create_service<example_interfaces::srv::AddTwoInts>("add_two_ints", std::bind(&SimpleServiceServer::callback));
+        // auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
+        _service = this->create_service<example_interfaces::srv::AddTwoInts>("add_two_ints", std::bind(&SimpleServiceServer::callback, this, std::placeholders::_1, std::placeholders::_2));
     }
 
 private:
