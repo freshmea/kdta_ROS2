@@ -16,7 +16,7 @@ void MoveTurtleBot::publish_turtlesim_msg()
     switch (_i)
     {
     case 0:
-        if (_odom_msg.pose.pose.position.x < 6.5)
+        if (_odom_msg.pose.pose.position.x < 0.3)
         {
             // 직진
             msg.linear.x = 0.1;
@@ -26,7 +26,7 @@ void MoveTurtleBot::publish_turtlesim_msg()
         {
             // 회전
             msg.linear.x = 0.0;
-            msg.angular.z = 1.8;
+            msg.angular.z = 0.3;
         }
         else
         {
@@ -34,7 +34,7 @@ void MoveTurtleBot::publish_turtlesim_msg()
         }
         break;
     case 1:
-        if (_odom_msg.pose.pose.position.y < 6.5)
+        if (_odom_msg.pose.pose.position.y < 0.3)
         {
             // 직진
             msg.linear.x = 0.1;
@@ -44,7 +44,7 @@ void MoveTurtleBot::publish_turtlesim_msg()
         {
             // 회전
             msg.linear.x = 0.0;
-            msg.angular.z = 1.8;
+            msg.angular.z = 0.3;
         }
         else
         {
@@ -52,7 +52,7 @@ void MoveTurtleBot::publish_turtlesim_msg()
         }
         break;
     case 2:
-        if (_odom_msg.pose.pose.position.x > 5.5)
+        if (_odom_msg.pose.pose.position.x > 0)
         {
             // 직진
             msg.linear.x = 0.1;
@@ -62,7 +62,7 @@ void MoveTurtleBot::publish_turtlesim_msg()
         {
             // 회전
             msg.linear.x = 0.0;
-            msg.angular.z = 1.8;
+            msg.angular.z = 0.3;
         }
         else
         {
@@ -70,7 +70,7 @@ void MoveTurtleBot::publish_turtlesim_msg()
         }
         break;
     case 3:
-        if (_odom_msg.pose.pose.position.y > 5.5)
+        if (_odom_msg.pose.pose.position.y > 0)
         {
             // 직진
             msg.linear.x = 0.1;
@@ -80,7 +80,7 @@ void MoveTurtleBot::publish_turtlesim_msg()
         {
             // 회전
             msg.linear.x = 0.0;
-            msg.angular.z = 1.8;
+            msg.angular.z = 0.3;
         }
         else
         {
@@ -95,6 +95,6 @@ void MoveTurtleBot::sub_odom_msg(const nav_msgs::msg::Odometry::SharedPtr msg)
 {
     _odom_msg = *msg;
     tf2::Quaternion q(_odom_msg.pose.pose.orientation.x, _odom_msg.pose.pose.orientation.y, _odom_msg.pose.pose.orientation.z, _odom_msg.pose.pose.orientation.w);
-    _theta = q.getAngle();
+    _theta = q.getAngle() * 2 - 3.141592;
     RCLCPP_INFO(get_logger(), "Position(x: %f, y: %f, z: %f, theta: %f)", _odom_msg.pose.pose.position.x, _odom_msg.pose.pose.position.y, _odom_msg.pose.pose.position.z, _theta);
 }
