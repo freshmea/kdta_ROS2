@@ -10,7 +10,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
-find_package(example_interfaces REQUIRED)
+find_package(interface_example REQUIRED)
 find_package(rcl_interfaces REQUIRED)
 find_package(rclcpp_action REQUIRED)
 
@@ -45,19 +45,19 @@ add_executable(time_subscriber_class src/time_subscriber_class.cpp src/time_sub.
 ament_target_dependencies(time_subscriber_class rclcpp std_msgs)
 
 add_executable(simple_service_server src/simple_service_server.cpp)
-ament_target_dependencies(simple_service_server rclcpp std_msgs example_interfaces)
+ament_target_dependencies(simple_service_server rclcpp std_msgs interface_example)
 
 add_executable(simple_service_client src/simple_service_client.cpp)
-ament_target_dependencies(simple_service_client rclcpp std_msgs example_interfaces)
+ament_target_dependencies(simple_service_client rclcpp std_msgs interface_example)
 
 add_executable(simple_service_client2 src/simple_service_client2.cpp)
-ament_target_dependencies(simple_service_client2 rclcpp std_msgs example_interfaces rcl_interfaces)
+ament_target_dependencies(simple_service_client2 rclcpp std_msgs interface_example rcl_interfaces)
 
 add_executable(simple_action_server src/simple_action_server.cpp)
-ament_target_dependencies(simple_action_server rclcpp std_msgs example_interfaces rclcpp_action)
+ament_target_dependencies(simple_action_server rclcpp std_msgs interface_example rclcpp_action)
 
 add_executable(simple_action_client src/simple_action_client.cpp)
-ament_target_dependencies(simple_action_client rclcpp std_msgs example_interfaces rclcpp_action)
+ament_target_dependencies(simple_action_client rclcpp std_msgs interface_example rclcpp_action)
 
 #install
 install(TARGETS

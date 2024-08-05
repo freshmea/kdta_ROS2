@@ -1,4 +1,4 @@
-#include "example_interfaces/srv/add_two_ints.hpp"
+#include "interface_example/srv/add_two_int.hpp"
 #include "rcl_interfaces/msg/parameter_event.hpp"
 #include "rcl_interfaces/msg/set_parameters_result.hpp"
 #include "rclcpp/rclcpp.hpp"
@@ -15,7 +15,7 @@ public:
     SimpleServiceClient()
         : Node("addTwoInt_client"), _a(30), _b(24)
     {
-        _client = create_client<example_interfaces::srv::AddTwoInts>("add_two_ints");
+        _client = create_client<interface_example::srv::AddTwoInt>("add_two_ints");
         _timer = create_wall_timer(5s, std::bind(&SimpleServiceClient::send_request, this));
         declare_parameter("a", 40);
         declare_parameter("b", 74);
@@ -46,7 +46,7 @@ public:
             RCLCPP_INFO(get_logger(), "service not available, waiting again...");
         }
         // 보낼 변수 선언
-        auto request = std::make_shared<example_interfaces::srv::AddTwoInts::Request>();
+        auto request = std::make_shared<interface_example::srv::AddTwoInt::Request>();
         request->a = _a;
         request->b = _b;
 
@@ -54,7 +54,7 @@ public:
             request, std::bind(&SimpleServiceClient::response_callback, this,
                                std::placeholders::_1));
     }
-    void response_callback(rclcpp::Client<example_interfaces::srv::AddTwoInts>::SharedFuture future)
+    void response_callback(rclcpp::Client<interface_example::srv::AddTwoInt>::SharedFuture future)
     {
         auto status = future.wait_for(1s);
         if (status == std::future_status::ready)
@@ -86,7 +86,7 @@ public:
 private:
     int _a;
     int _b;
-    rclcpp::Client<example_interfaces::srv::AddTwoInts>::SharedPtr _client;
+    rclcpp::Client<interface_example::srv::AddTwoInt>::SharedPtr _client;
     rclcpp::TimerBase::SharedPtr _timer;
     rclcpp::Subscription<rcl_interfaces::msg::ParameterEvent>::SharedPtr _parameter_event_sub;
 };

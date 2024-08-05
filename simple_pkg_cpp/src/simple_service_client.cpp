@@ -1,4 +1,4 @@
-#include "example_interfaces/srv/add_two_ints.hpp"
+#include "interface_example/srv/add_two_int.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
 #include <chrono>
@@ -13,7 +13,7 @@ public:
     SimpleServiceClient()
         : Node("addTwoInt_client"), _a(40), _b(74)
     {
-        _client = create_client<example_interfaces::srv::AddTwoInts>("add_two_ints");
+        _client = create_client<interface_example::srv::AddTwoInt>("add_two_ints");
         while (!_client->wait_for_service(1s)) // 서버연결
         {
             if (!rclcpp::ok())
@@ -27,7 +27,7 @@ public:
     void send_request()
     {
         RCLCPP_INFO(get_logger(), "Sending request...");
-        auto request = std::make_shared<example_interfaces::srv::AddTwoInts::Request>();
+        auto request = std::make_shared<interface_example::srv::AddTwoInt::Request>();
         request->a = _a;
         request->b = _b;
         auto result = _client->async_send_request(request); // 비동기 요청
@@ -45,7 +45,7 @@ public:
 private:
     int _a;
     int _b;
-    rclcpp::Client<example_interfaces::srv::AddTwoInts>::SharedPtr _client;
+    rclcpp::Client<interface_example::srv::AddTwoInt>::SharedPtr _client;
 };
 
 int main(int argc, char *argv[])
