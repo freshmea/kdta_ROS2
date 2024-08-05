@@ -12,6 +12,7 @@ find_package(std_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(example_interfaces REQUIRED)
 find_package(rcl_interfaces REQUIRED)
+find_package(rclcpp_action REQUIRED)
 
 # include directories
 include_directories(include)
@@ -52,6 +53,9 @@ ament_target_dependencies(simple_service_client rclcpp std_msgs example_interfac
 add_executable(simple_service_client2 src/simple_service_client2.cpp)
 ament_target_dependencies(simple_service_client2 rclcpp std_msgs example_interfaces rcl_interfaces)
 
+add_executable(simple_action_server src/simple_action_server.cpp)
+ament_target_dependencies(simple_action_server rclcpp std_msgs example_interfaces rclcpp_action)
+
 #install
 install(TARGETS
   helloword
@@ -66,6 +70,7 @@ install(TARGETS
   simple_service_server
   simple_service_client
   simple_service_client2
+  simple_action_server
   DESTINATION lib/${PROJECT_NAME}
 )
 
