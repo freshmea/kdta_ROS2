@@ -10,8 +10,11 @@ find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/ArithmeticArgument.msg"
   "srv/AddTwoInt.srv"
+  "srv/ArithmeticOperator.srv"
   "action/Fibonacci.action"
+  "action/ArithmeticChecker.action"
 )
 
 if(BUILD_TESTING)
