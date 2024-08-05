@@ -251,4 +251,16 @@ pip3 install numpy
     - ros2 param load /node_name
 - Launch 파일 작성
   - topic_final 에 추가
+
+---
+
+## 2024-08-05
+
+---
+
+- 복습
+- 파라미터 코드 적용
+  - param_events topic 활용.
+  - 파라미터 변경시 이벤트 발생
+  - set_parameters_callback 함수 사용
 - 

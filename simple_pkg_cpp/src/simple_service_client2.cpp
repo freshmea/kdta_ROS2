@@ -21,8 +21,8 @@ public:
         declare_parameter("b", 74);
         get_parameter("a", _a);
         get_parameter("b", _b);
-        set_parameter(rclcpp::Parameter("a", 50));
-        set_parameter(rclcpp::Parameter("b", 100));
+        // set_parameter(rclcpp::Parameter("a", 50));
+        // set_parameter(rclcpp::Parameter("b", 100));
         rclcpp::QoS qos(rclcpp::KeepLast(100), rmw_qos_profile_sensor_data);
         _parameter_event_sub = create_subscription<rcl_interfaces::msg::ParameterEvent>(
             "/parameter_events",
