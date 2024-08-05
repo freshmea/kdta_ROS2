@@ -1,4 +1,4 @@
-#include "example_interfaces/action/fibonacci.hpp"
+#include "interface_example/action/fibonacci.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 #include <chrono>
@@ -12,7 +12,7 @@ using namespace std::chrono_literals;
 class SimpleActionClient : public rclcpp::Node
 {
 public:
-    using Fibonacci = example_interfaces::action::Fibonacci;
+    using Fibonacci = interface_example::action::Fibonacci;
     using GoalHandleFibonacci = rclcpp_action::ClientGoalHandle<Fibonacci>;
 
     SimpleActionClient(const rclcpp::NodeOptions &options) : Node("fibonacci_action_client", options)
@@ -62,7 +62,7 @@ private:
     {
         std::stringstream ss;
         ss << "Next number in sequence received: ";
-        for (auto number : feedback->sequence)
+        for (auto number : feedback->partial_sequence)
         {
             ss << number << " ";
         }

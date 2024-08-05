@@ -1,4 +1,4 @@
-#include "example_interfaces/action/fibonacci.hpp"
+#include "interface_example/action/fibonacci.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 #include <functional>
@@ -8,7 +8,7 @@
 class SimpleActionServer : public rclcpp::Node
 {
 public:
-    using Fibonacci = example_interfaces::action::Fibonacci;
+    using Fibonacci = interface_example::action::Fibonacci;
     using GoalHandleFibonacci = rclcpp_action::ServerGoalHandle<Fibonacci>;
     SimpleActionServer() : Node("fibonacci_action_server")
     {
@@ -47,27 +47,27 @@ private:
         rclcpp::Rate loop_rate(1);
         const auto goal = goal_handle->get_goal();
         auto feedback = std::make_shared<Fibonacci::Feedback>();
-        feedback->sequence.push_back(0);
-        feedback->sequence.push_back(1);
+        feedback->partial_sequence.push_back(0);
+        feedback->partial_sequence.push_back(1);
         auto result = std::make_shared<Fibonacci::Result>();
 
         for (int i = 1; (i < goal->order) && rclcpp::ok(); ++i)
         {
             if (goal_handle->is_canceling())
             {
-                result->sequence = feedback->sequence;
+                result->sequence = feedback->partial_sequence;
                 goal_handle->canceled(result);
                 RCLCPP_INFO(get_logger(), "Goal canceled");
                 return;
             }
-            feedback->sequence.push_back(feedback->sequence[i] + feedback->sequence[i - 1]);
+            feedback->partial_sequence.push_back(feedback->partial_sequence[i] + feedback->partial_sequence[i - 1]);
             goal_handle->publish_feedback(feedback);
             RCLCPP_INFO(get_logger(), "Publish feedback");
             loop_rate.sleep();
         }
         if (rclcpp::ok())
         {
-            result->sequence = feedback->sequence;
+            result->sequence = feedback->partial_sequence;
             goal_handle->succeed(result);
             RCLCPP_INFO(get_logger(), "Goal succeeded");
         }
