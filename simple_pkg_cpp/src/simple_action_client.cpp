@@ -12,7 +12,7 @@ class SimpleActionClient : public rclcpp::Node
 {
 public:
     using Fibonacci = example_interfaces::action::Fibonacci;
-    using GoalHandleFibonacci = rclcpp_action::ServerGoalHandle<Fibonacci>;
+    using GoalHandleFibonacci = rclcpp_action::ClientGoalHandle<Fibonacci>;
 
     SimpleActionClient(const rclcpp::NodeOptions &options) : Node("fibonacci_action_client")
     {
