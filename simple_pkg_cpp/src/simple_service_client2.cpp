@@ -30,6 +30,9 @@ public:
             std::bind(&SimpleServiceClient::param_event_callback,
                       this,
                       std::placeholders::_1));
+        // std::vector<rclcpp::Parameter> all_new_parameters{rclcpp::Parameter("a", 40),
+        //                                                   rclcpp::Parameter("b", 30)};
+        // this->set_parameters(all_new_parameters);
     }
 
     void send_request()
