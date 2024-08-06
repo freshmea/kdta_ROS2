@@ -12,15 +12,15 @@ find_package(interface_example REQUIRED)
 find_package(rclcpp_action REQUIRED)
 
 #add executable
-# add_executable(calculator src/calculator.cpp)
-# ament_target_dependencies(calculator rclcpp interface_example rclcpp_action)
+add_executable(calculator src/calculator.cpp)
+ament_target_dependencies(calculator rclcpp interface_example rclcpp_action)
 
 add_executable(argument src/argument.cpp)
 ament_target_dependencies(argument rclcpp interface_example)
 
 #install
 install(TARGETS
-  # calculator
+  calculator
   argument
   DESTINATION lib/${PROJECT_NAME}
 )
