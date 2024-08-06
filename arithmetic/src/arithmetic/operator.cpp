@@ -1,6 +1,6 @@
 #include "arithmetic/operator.hpp"
 
-Operator::Operator(const rclcpp::NodeOptions &options = rclcpp::NodeOptions())
+Operator::Operator(const rclcpp::NodeOptions &options)
     : Node("operator", options)
 {
     _service = create_client<ArithmeticOperator>("arithmetic_operator");
