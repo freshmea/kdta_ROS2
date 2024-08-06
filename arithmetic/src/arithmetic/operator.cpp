@@ -1,7 +1,7 @@
 #include "arithmetic/operator.hpp"
 
 Operator::Operator(const rclcpp::NodeOptions &options)
-    : Node("operator", options)
+    : Node("operator", options), _arithmetic_operator(1)
 {
 
     auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
