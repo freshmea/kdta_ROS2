@@ -59,6 +59,9 @@ ament_target_dependencies(simple_action_server rclcpp std_msgs interface_example
 add_executable(simple_action_client src/simple_action_client.cpp)
 ament_target_dependencies(simple_action_client rclcpp std_msgs interface_example rclcpp_action)
 
+add_executable(cpp_parameter_node src/cpp_parameter_node.cpp)
+ament_target_dependencies(cpp_parameter_node rclcpp)
+
 #install
 install(TARGETS
   helloword
@@ -75,6 +78,7 @@ install(TARGETS
   simple_service_client2
   simple_action_server
   simple_action_client
+  cpp_parameter_node
   DESTINATION lib/${PROJECT_NAME}
 )
 

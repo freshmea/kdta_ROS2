@@ -3,8 +3,29 @@
 Operator::Operator(const rclcpp::NodeOptions &options)
     : Node("operator", options)
 {
+    auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
     _service = create_client<ArithmeticOperator>("arithmetic_operator");
     _timer = create_wall_timer(1s, std::bind(&Operator::timer_callback, this));
+
+    declare_parameter("random", true);
+    _random_state = get_parameter("random").get_value<bool>();
+    _parameter_event_sub = create_subscription<rcl_interfaces::msg::ParameterEvent>(
+        "/parameter_events",
+        qos_profile,
+        std::bind(&Operator::param_event_callback,
+                  this,
+                  std::placeholders::_1));
+}
+void Operator::param_event_callback(const rcl_interfaces::msg::ParameterEvent::SharedPtr event)
+{
+    for (auto &changed_parameter : event->changed_parameters)
+    {
+        if (changed_parameter.name == "random")
+        {
+            auto value = rclcpp::Parameter::from_parameter_msg(changed_parameter).get_value<bool>();
+            _random_state = value;
+        }
+    }
 }
 void Operator::timer_callback()
 {
