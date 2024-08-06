@@ -284,3 +284,27 @@ pip3 install numpy
 *** interface_example include 과정에서 문제 발견 -> 수정 완료.
 
 이진우 : HP 010-8824-4455
+
+---
+
+## 2024-08-06
+
+---
+
+- 복습
+- 남은 5일 일정 설명
+  - 라즈베리파이3 CSI 카메라 설정
+  - GPIO 이용한 추가 장치 설정
+  - 아두이노를 이용한 추가 장치 설정
+  - SLAM : cartographer 설치 및 설정
+  - NAV2 : nav2 라이브러리 설치 및 설정
+- Arithmetic 패키지 작성
+  - 분할 컴파일
+    - argument.cpp -> argument.cpp, argument.hpp
+    - 폴더 나누기
+  - 서비스 노드 작성
+    - operator.cpp
+  - `실습` argument.cpp 기능 추가하기
+    - 램덤하게 operator 발행 하기
+    - 파라미터 설정해서 램덤 혹은 스테틱 설정하기
+    - 파라미터를 yaml 로 저장해서 launch 파일로 불러오기
