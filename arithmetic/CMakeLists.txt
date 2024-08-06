@@ -20,10 +20,14 @@ ament_target_dependencies(calculator rclcpp interface_example rclcpp_action)
 add_executable(argument src/arithmetic/argument.cpp)
 ament_target_dependencies(argument rclcpp interface_example)
 
+add_executable(operator src/arithmetic/operator.cpp)
+ament_target_dependencies(operator rclcpp interface_example)
+
 #install
 install(TARGETS
   calculator
   argument
+  operator
   DESTINATION lib/${PROJECT_NAME}
 )
 

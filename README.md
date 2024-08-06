@@ -1,5 +1,11 @@
 # kdta_ROS2
 
+- Environment :
+  - windows11 : wmware workstation 16 player
+  - ubuntu 22.04:
+  - ROS2 : humble
+  - Book : ROS2로 배우는 로봇 프로그래밍
+
 - 공유 슬라이드
 [링크](https://docs.google.com/presentation/d/1453nx14DVMk0nBLW7jpt0g6x7a7z2wuNaJKmcVQi4rw/edit?usp=sharing)
 

@@ -1,3 +1,5 @@
+#ifndef ARGUMENT_HPP_
+#define ARGUMENT_HPP_
 
 #include "interface_example/msg/arithmetic_argument.hpp"
 #include "rcl_interfaces/msg/parameter_event.hpp"
@@ -24,3 +26,5 @@ private:
 
     void param_event_callback(const rcl_interfaces::msg::ParameterEvent::SharedPtr event);
 };
+
+#endif // ARGUMENT_HPP_
