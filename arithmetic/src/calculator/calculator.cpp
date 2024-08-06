@@ -20,6 +20,8 @@ void Calculator::sub_callback(const ArithmeticArgument::SharedPtr msg)
 {
     _sub_a = msg->argument_a;
     _sub_b = msg->argument_b;
+    _argument_result = _sub_a + _sub_b;
+    _operator_str = std::to_string(_sub_a) + _operator_str + std::to_string(_sub_b) + "=" + std::to_string(_argument_result);
     RCLCPP_INFO(get_logger(), "Received: {a: %f, b: %f}", _sub_a, _sub_b);
 }
 
@@ -27,21 +29,20 @@ void Calculator::service_callback(const std::shared_ptr<ArithmeticOperator::Requ
 {
     _argument_operator = request->arithmetic_operator;
 
-    std::string operator_str;
     if (_argument_operator == request->PLUS)
     {
         _argument_result = _sub_a + _sub_b;
-        operator_str = "+";
+        _operator_str = "+";
     }
     else if (_argument_operator == request->MINUS)
     {
         _argument_result = _sub_a - _sub_b;
-        operator_str = "-";
+        _operator_str = "-";
     }
     else if (_argument_operator == request->MULTIPLY)
     {
         _argument_result = _sub_a * _sub_b;
-        operator_str = "*";
+        _operator_str = "*";
     }
     else if (_argument_operator == request->DIVISION)
     {
@@ -49,19 +50,61 @@ void Calculator::service_callback(const std::shared_ptr<ArithmeticOperator::Requ
         {
             RCLCPP_ERROR(get_logger(), "Division by zero");
             _argument_result = 0;
-            operator_str = "/";
+            _operator_str = "/";
         }
         else
         {
             _argument_result = _sub_a / _sub_b;
-            operator_str = "/";
+            _operator_str = "/";
         }
     }
     else
     {
         RCLCPP_ERROR(get_logger(), "Unknown operator");
     }
-    operator_str = std::to_string(_sub_a) + operator_str + std::to_string(_sub_b) + "=" + std::to_string(_argument_result);
-    RCLCPP_INFO(get_logger(), "Result: %s", operator_str.c_str());
+    _operator_str = std::to_string(_sub_a) + _operator_str + std::to_string(_sub_b) + "=" + std::to_string(_argument_result);
+    RCLCPP_INFO(get_logger(), "Result: %s", _operator_str.c_str());
     response->arithmetic_result = _argument_result;
+}
+
+rclcpp_action::GoalResponse Calculator::handle_goal(const rclcpp_action::GoalUUID &uuid, std::shared_ptr<const ArithmeticChecker::Goal> goal_handle)
+{
+    (void)uuid;
+    (void)goal_handle;
+    return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
+}
+
+rclcpp_action::CancelResponse Calculator::handle_cancel(const std::shared_ptr<GoalHandleArithmeticChecker> goal_handle)
+{
+    RCLCPP_INFO(get_logger(), "Received request to cancel goal");
+    (void)goal_handle;
+    return rclcpp_action::CancelResponse::ACCEPT;
+}
+
+void Calculator::execute_checker(const std::shared_ptr<GoalHandleArithmeticChecker> goal_handle)
+{
+    RCLCPP_INFO(get_logger(), "Executing goal");
+    rclcpp::Rate loop_rate(1);
+    float total_sum = 0.0;
+    float goal_sum = goal_handle->get_goal()->goal_sum;
+    auto feedback = std::make_shared<ArithmeticChecker::Feedback>();
+
+    while ((total_sum < goal_sum) && rclcpp::ok())
+    {
+        total_sum += _argument_result;
+        _partial_formula.push_back(_operator_str);
+        feedback->formula = _partial_formula;
+        if (_partial_formula.empty())
+        {
+            RCLCPP_INFO(get_logger(), "please check your formula");
+            break;
+        }
+        RCLCPP_INFO(get_logger(), "Publish feedback");
+        for (auto &formula : _partial_formula)
+        {
+            RCLCPP_INFO(get_logger(), "%s", formula.c_str());
+        }
+        goal_handle->publish_feedback(feedback);
+        loop_rate.sleep();
+    }
 }
