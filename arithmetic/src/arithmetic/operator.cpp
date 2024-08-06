@@ -18,6 +18,7 @@ void Operator::timer_callback()
     }
     // 보낼 변수 선언
     auto request = std::make_shared<ArithmeticOperator::Request>();
+    // TODO: random operator
     request->arithmetic_operator = request->PLUS;
 
     auto result_future = _service->async_send_request(
