@@ -1,6 +1,7 @@
 #include "arithmetic/operator.hpp"
 
 Operator::Operator(const rclcpp::NodeOptions &options = rclcpp::NodeOptions())
+    : Node("operator", options)
 {
     _service = create_client<ArithmeticOperator>("arithmetic_operator");
     _timer = create_wall_timer(1s, std::bind(&Operator::timer_callback, this));
