@@ -11,11 +11,13 @@ find_package(rclcpp REQUIRED)
 find_package(interface_example REQUIRED)
 find_package(rclcpp_action REQUIRED)
 
+include_directories(include)
+
 #add executable
-add_executable(calculator src/calculator.cpp)
+add_executable(calculator src/calculator/calculator.cpp src/calculator/main.cpp)
 ament_target_dependencies(calculator rclcpp interface_example rclcpp_action)
 
-add_executable(argument src/argument.cpp)
+add_executable(argument src/arithmetic/argument.cpp)
 ament_target_dependencies(argument rclcpp interface_example)
 
 #install
