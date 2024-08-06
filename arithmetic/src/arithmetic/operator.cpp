@@ -31,11 +31,12 @@ void Operator::response_callback(rclcpp::Client<ArithmeticOperator>::SharedFutur
     auto status = future.wait_for(1s);
     if (status == std::future_status::ready)
     {
-        // RCLCPP_INFO(get_logger(), "Result of %d + %d = %ld", _a, _b, future.get()->sum);
+        // TODO: operator 내부 변수 저장후 로깅.
+        RCLCPP_INFO(get_logger(), "Result :%f", future.get()->arithmetic_result);
     }
     else
     {
-        // RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+        RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
     }
 }
 
