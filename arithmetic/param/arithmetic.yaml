@@ -1,0 +1,24 @@
+/operator:
+  ros__parameters:
+    qos_overrides:
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+    random: false
+    use_sim_time: false
+/argument:
+  ros__parameters:
+    max_random_num: 90.0
+    min_random_num: 10.0
+    qos_overrides:
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+    use_sim_time: false
+

@@ -33,7 +33,7 @@ install(TARGETS
 
 install(DIRECTORY
   launch
-  # param
+  param
   DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)

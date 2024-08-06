@@ -3,6 +3,7 @@
 Operator::Operator(const rclcpp::NodeOptions &options)
     : Node("operator", options)
 {
+
     auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
     _service = create_client<ArithmeticOperator>("arithmetic_operator");
     _timer = create_wall_timer(1s, std::bind(&Operator::timer_callback, this));
@@ -39,9 +40,18 @@ void Operator::timer_callback()
     }
     // 보낼 변수 선언
     auto request = std::make_shared<ArithmeticOperator::Request>();
-    // TODO: random operator or parameter
-    request->arithmetic_operator = request->PLUS;
-
+    if (_random_state)
+    {
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<int> dis(1, 4);
+        request->arithmetic_operator = (int8_t)dis(gen);
+        _arithmetic_operator = request->arithmetic_operator;
+    }
+    else
+    {
+        request->arithmetic_operator = _arithmetic_operator;
+    }
     auto result_future = _service->async_send_request(
         request, std::bind(&Operator::response_callback, this,
                            std::placeholders::_1));

@@ -6,6 +6,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "rcutils/cmdline_parser.h"
 #include <chrono>
+#include <random>
 
 using namespace std::chrono_literals;
 class Operator : public rclcpp::Node
@@ -16,6 +17,7 @@ public:
 
 private:
     bool _random_state;
+    int8_t _arithmetic_operator;
     rclcpp::Subscription<rcl_interfaces::msg::ParameterEvent>::SharedPtr _parameter_event_sub;
     rclcpp::Client<ArithmeticOperator>::SharedPtr _service;
     rclcpp::TimerBase::SharedPtr _timer;
