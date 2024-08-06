@@ -2,7 +2,39 @@
 
 Operator::Operator(const rclcpp::NodeOptions &options = rclcpp::NodeOptions())
 {
-    return
+    _service = create_client<ArithmeticOperator>("arithmetic_operator");
+    _timer = create_wall_timer(1s, std::bind(&Operator::timer_callback, this));
+}
+void Operator::timer_callback()
+{
+    while (!_service->wait_for_service(1s)) // 서버연결
+    {
+        if (!rclcpp::ok())
+        {
+            RCLCPP_ERROR(get_logger(), "Over time!");
+        }
+        RCLCPP_INFO(get_logger(), "service not available, waiting again...");
+    }
+    // 보낼 변수 선언
+    auto request = std::make_shared<ArithmeticOperator::Request>();
+    request->arithmetic_operator = request->PLUS;
+
+    auto result_future = _service->async_send_request(
+        request, std::bind(&Operator::response_callback, this,
+                           std::placeholders::_1));
+}
+
+void Operator::response_callback(rclcpp::Client<ArithmeticOperator>::SharedFuture future)
+{
+    auto status = future.wait_for(1s);
+    if (status == std::future_status::ready)
+    {
+        // RCLCPP_INFO(get_logger(), "Result of %d + %d = %ld", _a, _b, future.get()->sum);
+    }
+    else
+    {
+        // RCLCPP_INFO(this->get_logger(), "Service In-Progress...");
+    }
 }
 
 void print_help()
