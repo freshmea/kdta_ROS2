@@ -17,12 +17,12 @@ public:
     using ArithmeticChecker = interface_example::action::ArithmeticChecker;
     using GoalHandleArithmeticChecker = rclcpp_action::ClientGoalHandle<ArithmeticChecker>;
 
-    Checker();
+    Checker(float goal_sum, const rclcpp::NodeOptions &node_options);
     float _goal_sum;
     const rclcpp::NodeOptions _node_options = rclcpp::NodeOptions();
 
 private:
-    rclcpp_action::Client<ArithmeticChecker>::SharedPtr _action_client;
+    rclcpp_action::Client<ArithmeticChecker>::SharedPtr _arithmetic_action_client;
 
     void send_goal_total_sum(float goal_sum);
 
