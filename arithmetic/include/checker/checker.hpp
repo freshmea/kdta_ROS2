@@ -17,9 +17,9 @@ public:
     using ArithmeticChecker = interface_example::action::ArithmeticChecker;
     using GoalHandleArithmeticChecker = rclcpp_action::ClientGoalHandle<ArithmeticChecker>;
 
-    Checker(float goal_sum, const rclcpp::NodeOptions &node_options);
     float _goal_sum;
     const rclcpp::NodeOptions _node_options = rclcpp::NodeOptions();
+    Checker(float goal_sum, const rclcpp::NodeOptions &node_options);
 
 private:
     rclcpp_action::Client<ArithmeticChecker>::SharedPtr _arithmetic_action_client;
@@ -27,7 +27,7 @@ private:
     void send_goal_total_sum(float goal_sum);
 
     void get_arithmetic_action_response_callback(const GoalHandleArithmeticChecker::SharedPtr &future);
-    void get_arithmetic_action_feedback(const GoalHandleArithmeticChecker::SharedPtr &goal_handle,
+    void get_arithmetic_action_feedback(const GoalHandleArithmeticChecker::SharedPtr,
                                         const std::shared_ptr<const ArithmeticChecker::Feedback> feedback);
     void get_arithmetic_action_result(const GoalHandleArithmeticChecker::WrappedResult &result);
 };

@@ -23,7 +23,8 @@ int main(int argc, char *argv[])
     {
         goal_total_sum = atof(cli_option);
     }
-    rclcpp::spin(std::make_shared<Checker>(goal_total_sum));
+    rclcpp::NodeOptions options;
+    rclcpp::spin(std::make_shared<Checker>(goal_total_sum, options));
     rclcpp::shutdown();
     return 0;
 }
