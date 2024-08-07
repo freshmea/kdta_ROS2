@@ -4,6 +4,7 @@ Calculator::Calculator() : Node("calculator")
 {
     auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
     _subscription = create_subscription<ArithmeticArgument>("arithmetic_argument", qos_profile, std::bind(&Calculator::sub_callback, this, _1));
+    // auto callback_group = this->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
     _service = create_service<ArithmeticOperator>("arithmetic_operator", std::bind(&Calculator::service_callback, this, _1, _2));
     _action_server = rclcpp_action::create_server<ArithmeticChecker>(
         get_node_base_interface(),

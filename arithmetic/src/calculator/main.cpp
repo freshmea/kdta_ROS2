@@ -15,8 +15,14 @@ int main(int argc, char *argv[])
         print_help();
         return 0;
     }
-    rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<Calculator>());
+
+    // rclcpp::init(argc, argv);
+    // rclcpp::spin(std::make_shared<Calculator>());
+    auto node = std::make_shared<Calculator>();
+    auto exec_args = rclcpp::ExecutorOptions();
+    auto executor = std::make_unique<rclcpp::executors::MultiThreadedExecutor>(exec_args, 2);
+    executor->add_node(node);
+    executor->spin();
     rclcpp::shutdown();
     return 0;
 }
