@@ -13,7 +13,7 @@ Calculator::Calculator() : Node("calculator")
         "arithmetic_checker",
         std::bind(&Calculator::handle_goal, this, _1, _2),
         std::bind(&Calculator::handle_cancel, this, _1),
-        std::bind(&Calculator::execute_checker, this, _1));
+        std::bind(&Calculator::handle_accepted, this, _1));
 }
 
 void Calculator::sub_callback(const ArithmeticArgument::SharedPtr msg)
@@ -21,7 +21,7 @@ void Calculator::sub_callback(const ArithmeticArgument::SharedPtr msg)
     _sub_a = msg->argument_a;
     _sub_b = msg->argument_b;
     _argument_result = _sub_a + _sub_b;
-    _operator_str = std::to_string(_sub_a) + _operator_str + std::to_string(_sub_b) + "=" + std::to_string(_argument_result);
+    _formula_str = std::to_string(_sub_a) + " " + _operator_str + " " + std::to_string(_sub_b) + " = " + std::to_string(_argument_result) + " ,";
     RCLCPP_INFO(get_logger(), "Received: {a: %f, b: %f}", _sub_a, _sub_b);
 }
 
@@ -62,8 +62,8 @@ void Calculator::service_callback(const std::shared_ptr<ArithmeticOperator::Requ
     {
         RCLCPP_ERROR(get_logger(), "Unknown operator");
     }
-    _operator_str = std::to_string(_sub_a) + _operator_str + std::to_string(_sub_b) + "=" + std::to_string(_argument_result);
-    RCLCPP_INFO(get_logger(), "Result: %s", _operator_str.c_str());
+    _formula_str = std::to_string(_sub_a) + " " + _operator_str + " " + std::to_string(_sub_b) + " = " + std::to_string(_argument_result) + " ,";
+    RCLCPP_INFO(get_logger(), "Result: %s", _formula_str.c_str());
     response->arithmetic_result = _argument_result;
 }
 
@@ -81,6 +81,11 @@ rclcpp_action::CancelResponse Calculator::handle_cancel(const std::shared_ptr<Go
     return rclcpp_action::CancelResponse::ACCEPT;
 }
 
+void Calculator::handle_accepted(const std::shared_ptr<GoalHandleArithmeticChecker> goal_handle)
+{
+    std::thread{std::bind(&Calculator::execute_checker, this, std::placeholders::_1), goal_handle}.detach();
+}
+
 void Calculator::execute_checker(const std::shared_ptr<GoalHandleArithmeticChecker> goal_handle)
 {
     RCLCPP_INFO(get_logger(), "Executing goal");
@@ -92,7 +97,7 @@ void Calculator::execute_checker(const std::shared_ptr<GoalHandleArithmeticCheck
     while ((total_sum < goal_sum) && rclcpp::ok())
     {
         total_sum += _argument_result;
-        _partial_formula.push_back(_operator_str);
+        _partial_formula.push_back(_formula_str);
         feedback->formula = _partial_formula;
         if (_partial_formula.empty())
         {
@@ -106,5 +111,13 @@ void Calculator::execute_checker(const std::shared_ptr<GoalHandleArithmeticCheck
         }
         goal_handle->publish_feedback(feedback);
         loop_rate.sleep();
+    }
+    if (rclcpp::ok())
+    {
+        auto result = std::make_shared<ArithmeticChecker::Result>();
+        result->all_formula = _partial_formula;
+        result->total_sum = total_sum;
+        goal_handle->succeed(result);
+        RCLCPP_INFO(get_logger(), "Goal succeeded");
     }
 }
