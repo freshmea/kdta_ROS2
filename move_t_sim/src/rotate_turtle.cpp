@@ -32,7 +32,6 @@ public:
             rclcpp::shutdown();
         }
         auto goal_msg = RotateAbsolute::Goal();
-        // degree to radian
 
         goal_msg.theta = (float)_goal * M_PI / 180;
         RCLCPP_INFO(get_logger(), "Sending goal request");

@@ -13,6 +13,10 @@ find_package(nav_msgs REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(rclcpp_action REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(cv_bridge REQUIRED)
+find_package(OpenCV REQUIRED)
+
 
 include_directories(include)
 
@@ -32,6 +36,9 @@ ament_target_dependencies(moveTurtleBot2 rclcpp geometry_msgs nav_msgs tf2)
 add_executable(rotate_turtle src/rotate_turtle.cpp)
 ament_target_dependencies(rotate_turtle rclcpp turtlesim rclcpp_action)
 
+add_executable(canny_camera src/canny_camera.cpp)
+ament_target_dependencies(canny_camera rclcpp sensor_msgs cv_bridge OpenCV)
+
 #install
 install(TARGETS
   moveTurtleSim
@@ -39,6 +46,7 @@ install(TARGETS
   moveTurtleBot
   moveTurtleBot2
   rotate_turtle
+  canny_camera
   DESTINATION lib/${PROJECT_NAME}
 )
 
