@@ -303,8 +303,10 @@ pip3 install numpy
     - argument.cpp -> argument.cpp, argument.hpp
     - 폴더 나누기
   - 서비스 노드 작성
-    - operator.cpp
+    - operator.cpp, operator.hpp
   - `실습` argument.cpp 기능 추가하기
     - 램덤하게 operator 발행 하기
     - 파라미터 설정해서 램덤 혹은 스테틱 설정하기
     - 파라미터를 yaml 로 저장해서 launch 파일로 불러오기
+  - 액션 노드 작성
+    - action server 작성 
