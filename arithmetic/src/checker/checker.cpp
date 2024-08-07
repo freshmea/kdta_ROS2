@@ -48,16 +48,14 @@ void Checker::get_arithmetic_action_response_callback(const GoalHandleArithmetic
 void Checker::get_arithmetic_action_feedback(const GoalHandleArithmeticChecker::SharedPtr &goal_handle,
                                              const std::shared_ptr<const ArithmeticChecker::Feedback> feedback)
 {
-    std::stringstream ss;
-    ss << "Next number in sequence received: ";
-    for (auto number : feedback->partial_sequence)
+    RCLCPP_INFO(get_logger(), "Action feedback:");
+    for (auto str : feedback->formula)
     {
-        ss << number << " ";
+        RCLCPP_INFO(get_logger(), str.c_str());
     }
-    RCLCPP_INFO(get_logger(), ss.str().c_str());
 }
 
-void Checker::get_arithmetic_action_result(const GoalHandleArithmeticChecker::WrappedResult &result);
+void Checker::get_arithmetic_action_result(const GoalHandleArithmeticChecker::WrappedResult &result)
 {
     switch (result.code)
     {
@@ -73,12 +71,12 @@ void Checker::get_arithmetic_action_result(const GoalHandleArithmeticChecker::Wr
         RCLCPP_INFO(get_logger(), "Goal result is unknown");
         return;
     }
-    std::stringstream ss;
-    ss << "Result received: ";
-    for (auto number : result.result->sequence)
+    RCLCPP_INFO(get_logger(), "Action succeeded!");
+    RCLCPP_INFO(get_logger(), "Result :");
+    for (auto str : result.result->all_formula)
     {
-        ss << number << " ";
+        RCLCPP_INFO(get_logger(), str.c_str());
     }
-    RCLCPP_INFO(get_logger(), ss.str().c_str());
+    RCLCPP_INFO(get_logger(), "Total sum : %f", result.result->total_sum);
     rclcpp::shutdown();
 }
