@@ -22,6 +22,7 @@ public:
     }
 
 private:
+    bool _is_wall;
     sensor_msgs::msg::LaserScan _laser_data;
     geometry_msgs::msg::Twist _twist;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr _twist_pub;
@@ -45,15 +46,37 @@ private:
         {
             return;
         }
-        if (_laser_data.ranges[0] > 0.3)
+        if (_is_wall)
         {
-            _twist.linear.x = 0.1;
-            _twist.angular.z = 0.0;
+            if (_laser_data.ranges[0] < 0.4 || _laser_data.ranges[315] < 0.4)
+            {
+                _twist.linear.x = 0.0;
+                _twist.angular.z = -0.2;
+            }
+            else if (_laser_data.ranges[45] > 0.4)
+            {
+                _twist.linear.x = 0.05;
+                _twist.angular.z = 0.2;
+            }
+            else if (_laser_data.ranges[45] < 0.3)
+            {
+                _twist.linear.x = 0.05;
+                _twist.angular.z = -0.2;
+            }
+            else
+            {
+                _twist.linear.x = 0.1;
+                _twist.angular.z = 0.0;
+            }
         }
         else
         {
-            _twist.linear.x = -0.1;
+            _twist.linear.x = 0.1;
             _twist.angular.z = 0.0;
+            if (_laser_data.ranges[0] < 0.3)
+            {
+                _is_wall = true;
+            }
         }
     }
     void restrain()

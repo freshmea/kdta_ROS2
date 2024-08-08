@@ -48,6 +48,9 @@ ament_target_dependencies(simple_ridar rclcpp sensor_msgs)
 add_executable(stay_thirty src/stay_thirty.cpp)
 ament_target_dependencies(stay_thirty rclcpp geometry_msgs sensor_msgs)
 
+add_executable(follow_wall src/follow_wall.cpp)
+ament_target_dependencies(follow_wall rclcpp geometry_msgs sensor_msgs)
+
 #install
 install(TARGETS
   moveTurtleSim
@@ -58,7 +61,7 @@ install(TARGETS
   canny_camera
   canny_camera2
   simple_ridar
-  stay_thirty
+  follow_wall
   DESTINATION lib/${PROJECT_NAME}
 )
 
