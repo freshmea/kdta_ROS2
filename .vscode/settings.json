@@ -70,7 +70,7 @@
         "future": "cpp"
     },
     "ros.distro": "humble",
-    "cmake.sourceDirectory": "/home/aa/kdta_ROS2/opencv/ch02",
+    "cmake.sourceDirectory": "/home/aa/kdta_ws/src/kdta_ROS2/arithmetic",
     "python.autoComplete.extraPaths": [
         "/home/aa/robot_ws/install/visualization_msgs/local/lib/python3.10/dist-packages",
         "/home/aa/robot_ws/install/test_msgs/local/lib/python3.10/dist-packages",

@@ -1,7 +1,7 @@
 #include "cv_bridge/cv_bridge.h"
 #include "opencv2/opencv.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "sensor_msgs/msg/compressed_image.hpp"
+#include "sensor_msgs/msg/image.hpp"
 #include <chrono>
 #include <iostream>
 
@@ -15,14 +15,13 @@ public:
         : Node("canny_camera")
     {
         auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
-        _sub = create_subscription<sensor_msgs::msg::CompressedImage>("/image_raw/compressed", qos_profile, std::bind(&CannyCamera::sub_img, this, std::placeholders::_1));
+        _sub = create_subscription<sensor_msgs::msg::Image>("camera1/image_raw", qos_profile, std::bind(&CannyCamera::sub_img, this, std::placeholders::_1));
     }
 
 private:
-    rclcpp::Subscription<sensor_msgs::msg::CompressedImage>::SharedPtr _sub;
-    void sub_img(const sensor_msgs::msg::CompressedImage msg)
+    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr _sub;
+    void sub_img(const sensor_msgs::msg::Image msg)
     {
-
         cv_bridge::CvImagePtr cv_ptr;
         cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
         cv::Mat img = cv_ptr->image;
