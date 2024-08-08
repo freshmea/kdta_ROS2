@@ -12,7 +12,8 @@ public:
     LaserSensor()
         : Node("laser_sensor")
     {
-        auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
+        auto qos_profile = rclcpp::SensorDataQoS();
+        // auto qos_profile = rclcpp::QoS(rclcpp::KeepLast(10));
         _sub = create_subscription<sensor_msgs::msg::LaserScan>("/scan", qos_profile, std::bind(&LaserSensor::sub_img, this, std::placeholders::_1));
     }
 
