@@ -42,6 +42,9 @@ ament_target_dependencies(canny_camera rclcpp sensor_msgs cv_bridge OpenCV)
 add_executable(canny_camera2 src/canny_camera2.cpp)
 ament_target_dependencies(canny_camera2 rclcpp sensor_msgs cv_bridge OpenCV)
 
+add_executable(simple_ridar src/simple_ridar.cpp)
+ament_target_dependencies(simple_ridar rclcpp sensor_msgs)
+
 #install
 install(TARGETS
   moveTurtleSim
@@ -51,6 +54,7 @@ install(TARGETS
   rotate_turtle
   canny_camera
   canny_camera2
+  simple_ridar
   DESTINATION lib/${PROJECT_NAME}
 )
 
