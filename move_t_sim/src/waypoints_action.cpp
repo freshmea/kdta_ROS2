@@ -98,12 +98,9 @@ private:
     geometry_msgs::msg::PoseStamped get_pose_from_xy_theta(const float &x, const float &y, const float &theta)
     {
         auto pose = geometry_msgs::msg::PoseStamped();
+        // quaternion from yaw
         tf2::Quaternion q;
-        double _roll, _pitch, _yaw;
-        _roll = 0.0;
-        _pitch = 0.0;
-        _yaw = theta;
-        tf2::Matrix3x3(q).setRPY(_roll, _pitch, _yaw);
+        q.setRPY(0, 0, theta);
 
         pose.header.frame_id = "map";
         pose.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
@@ -111,10 +108,10 @@ private:
         pose.pose.position.x = x;
         pose.pose.position.y = y;
         pose.pose.position.z = 0.0;
-        pose.pose.orientation.x = 0.0;
-        pose.pose.orientation.y = 0.0;
-        pose.pose.orientation.z = 0.0;
-        pose.pose.orientation.w = 1.0;
+        pose.pose.orientation.x = q.x();
+        pose.pose.orientation.y = q.y();
+        pose.pose.orientation.z = q.z();
+        pose.pose.orientation.w = q.w();
         return pose;
     }
 };
