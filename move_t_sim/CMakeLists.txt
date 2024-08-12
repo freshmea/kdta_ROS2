@@ -66,6 +66,7 @@ install(TARGETS
   canny_camera2
   simple_ridar
   follow_wall
+  waypoints_action
   DESTINATION lib/${PROJECT_NAME}
 )
 

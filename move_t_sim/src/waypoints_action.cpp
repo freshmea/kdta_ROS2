@@ -34,11 +34,19 @@ public:
         pose.header.frame_id = "pose";
         pose.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
         pose.pose = geometry_msgs::msg::Pose();
-        // TODO : x,y 값 바꾸기.
-        pose.pose.position.x = 1.0;
-        pose.pose.position.y = 1.0;
+        pose.pose.position.x = 3.7;
+        pose.pose.position.y = 0.0;
         pose.pose.position.z = 0.0;
         goal_msg.poses.push_back(pose);
+
+        auto pose2 = geometry_msgs::msg::PoseStamped();
+        pose2.header.frame_id = "pose";
+        pose2.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+        pose2.pose = geometry_msgs::msg::Pose();
+        pose2.pose.position.x = 0.0;
+        pose2.pose.position.y = 0.0;
+        pose2.pose.position.z = 0.0;
+        goal_msg.poses.push_back(pose2);
 
         RCLCPP_INFO(get_logger(), "Sending goal request");
 
