@@ -53,7 +53,7 @@ add_executable(follow_wall src/follow_wall.cpp)
 ament_target_dependencies(follow_wall rclcpp geometry_msgs sensor_msgs)
 
 add_executable(waypoints_action src/waypoints_action.cpp)
-ament_target_dependencies(waypoints_action rclcpp nav2_msgs rclcpp_action)
+ament_target_dependencies(waypoints_action rclcpp nav2_msgs rclcpp_action tf2)
 
 #install
 install(TARGETS

@@ -2,6 +2,8 @@
 #include "nav2_msgs/action/follow_waypoints.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
+#include "tf2/LinearMath/Matrix3x3.h"
+#include "tf2/LinearMath/Quaternion.h"
 #include <chrono>
 #include <functional>
 #include <memory>
@@ -30,23 +32,14 @@ public:
             rclcpp::shutdown();
         }
         auto goal_msg = FollowWaypoints::Goal();
-        auto pose = geometry_msgs::msg::PoseStamped();
-        pose.header.frame_id = "pose";
-        pose.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
-        pose.pose = geometry_msgs::msg::Pose();
-        pose.pose.position.x = 3.7;
-        pose.pose.position.y = 0.0;
-        pose.pose.position.z = 0.0;
-        goal_msg.poses.push_back(pose);
 
-        auto pose2 = geometry_msgs::msg::PoseStamped();
-        pose2.header.frame_id = "pose";
-        pose2.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
-        pose2.pose = geometry_msgs::msg::Pose();
-        pose2.pose.position.x = 0.0;
-        pose2.pose.position.y = 0.0;
-        pose2.pose.position.z = 0.0;
-        goal_msg.poses.push_back(pose2);
+        goal_msg.poses.push_back(get_pose_from_xy_theta(3.7, 0.0, 1.57));
+
+        goal_msg.poses.push_back(get_pose_from_xy_theta(3.7, 1.0, 3.14));
+
+        goal_msg.poses.push_back(get_pose_from_xy_theta(0, 1.0, -1.57));
+
+        goal_msg.poses.push_back(get_pose_from_xy_theta(0, 0, 0.0));
 
         RCLCPP_INFO(get_logger(), "Sending goal request");
 
@@ -101,6 +94,28 @@ private:
             RCLCPP_INFO(get_logger(), "missed_waypoints: %d", number);
         }
         rclcpp::shutdown();
+    }
+    geometry_msgs::msg::PoseStamped get_pose_from_xy_theta(const float &x, const float &y, const float &theta)
+    {
+        auto pose = geometry_msgs::msg::PoseStamped();
+        tf2::Quaternion q;
+        double _roll, _pitch, _yaw;
+        _roll = 0.0;
+        _pitch = 0.0;
+        _yaw = theta;
+        tf2::Matrix3x3(q).setRPY(_roll, _pitch, _yaw);
+
+        pose.header.frame_id = "map";
+        pose.header.stamp = rclcpp::Clock(RCL_ROS_TIME).now();
+        pose.pose = geometry_msgs::msg::Pose();
+        pose.pose.position.x = x;
+        pose.pose.position.y = y;
+        pose.pose.position.z = 0.0;
+        pose.pose.orientation.x = q.getX();
+        pose.pose.orientation.y = q.getY();
+        pose.pose.orientation.z = q.getZ();
+        pose.pose.orientation.w = q.getW();
+        return pose;
     }
 };
 
