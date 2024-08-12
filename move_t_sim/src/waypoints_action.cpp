@@ -111,10 +111,10 @@ private:
         pose.pose.position.x = x;
         pose.pose.position.y = y;
         pose.pose.position.z = 0.0;
-        pose.pose.orientation.x = q.getX();
-        pose.pose.orientation.y = q.getY();
-        pose.pose.orientation.z = q.getZ();
-        pose.pose.orientation.w = q.getW();
+        pose.pose.orientation.x = 0.0;
+        pose.pose.orientation.y = 0.0;
+        pose.pose.orientation.z = 0.0;
+        pose.pose.orientation.w = 1.0;
         return pose;
     }
 };
