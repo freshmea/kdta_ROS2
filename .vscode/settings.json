@@ -67,7 +67,8 @@
         "thread": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "xstring": "cpp"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/kdta_ws/src/kdta_ROS2/arithmetic",
