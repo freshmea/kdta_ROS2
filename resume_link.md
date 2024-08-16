@@ -15,4 +15,6 @@
   - [이력서](https://github.com/USU091/kdta_ROS2/blob/main/1.%20%EC%9E%85%EC%82%AC%EC%A7%80%EC%9B%90%EC%84%9C_%EC%96%91%EC%8B%9D_%EB%8C%80%ED%95%9C%EC%83%81%EC%9D%98.hwp)
 - 이지은
   - [이력서](https://github.com/leezizon/kdta_ROS2_Leezizon/blob/main/%EC%9D%B4%EB%A0%A5%EC%84%9C_%EC%9D%B4%EC%A7%80%EC%9D%80.hwp)
+- 김승연
+  - [이력서](https://github.com/yeon75/ros2_ws/blob/main/%EA%B9%80%EC%8A%B9%EC%97%B0_%EC%9E%85%EC%82%AC%EC%A7%80%EC%9B%90%EC%84%9C.hwp)
 - 
