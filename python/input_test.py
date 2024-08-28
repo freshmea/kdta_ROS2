@@ -15,6 +15,6 @@ def main():
         pass
     print(str1)
     print(type(str1))
-    
+    str1.
 if __name__ == "__main__":
     main()
