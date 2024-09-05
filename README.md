@@ -4,6 +4,8 @@
   - [클릭](https://7860-01j6zv6kf7tgcmjmefs5a6fc4k.cloudspaces.litng.ai/)
 - gpt2 학습
   - [클릭](https://colab.research.google.com/drive/1JBkrXNvk4lTVBUxiWxOB_Jf8lTw0BEai?usp=sharing)
+- mixtral lightening.ai 
+- [클릭](https://8501-01j6zcdh989h9c809c2skjmtae.cloudspaces.litng.ai)
 
 
 - Environment :
