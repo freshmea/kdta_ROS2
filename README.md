@@ -1,5 +1,8 @@
 # kdta_ROS2
 
+-lightening ai link
+- [클릭](https://7860-01j6zv6kf7tgcmjmefs5a6fc4k.cloudspaces.litng.ai/)
+
 - Environment :
   - windows11 : wmware workstation 16 player
   - ubuntu 22.04:

@@ -13,6 +13,7 @@
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
             "cppStandard": "c++14"
+            // windows 환경에서는 pythonPath를 추가해야 함
         }
     ],
     "version": 4
