@@ -1,7 +1,10 @@
 # kdta_ROS2
 
 -lightening ai link
-- [클릭](https://7860-01j6zv6kf7tgcmjmefs5a6fc4k.cloudspaces.litng.ai/)
+  - [클릭](https://7860-01j6zv6kf7tgcmjmefs5a6fc4k.cloudspaces.litng.ai/)
+- gpt2 학습
+  - [클릭](https://colab.research.google.com/drive/1JBkrXNvk4lTVBUxiWxOB_Jf8lTw0BEai?usp=sharing)
+
 
 - Environment :
   - windows11 : wmware workstation 16 player
