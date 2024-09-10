@@ -2,6 +2,7 @@
 
 -perceptron link
   -[클릭](https://colab.research.google.com/drive/1ucZHqf3DCLwq7E3MeTZWn7KeCzCjqFWw?usp=sharing)
+
 -lightening ai link
   - [클릭](https://7860-01j6zv6kf7tgcmjmefs5a6fc4k.cloudspaces.litng.ai/)
 - gpt2 학습
