@@ -1,7 +1,11 @@
 # kdta_ROS2
+
+-torch34
+  -[클릭](https://colab.research.google.com/drive/1t2YN3NEeA23EVZtgwTT8sSmwyYzmAzSM?usp=sharing)
+
 -torch32 nlk
   -[클릭](https://colab.research.google.com/drive/1nupH8KpTvB1L7cV9ZIInTztSfIsD7pjQ?usp=sharing)
-  
+
 -torch27 lstm
   -[클릭](https://colab.research.google.com/drive/1skFKCyaJX_F-AU9qT5St06Cc2abJl5eA?usp=sharing)
 
