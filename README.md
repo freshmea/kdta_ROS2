@@ -4,7 +4,7 @@
 
 
 -torch26 lstm
-  -[클릭](https://colab.research.google.com/drive/1KWtzULZJ7dwt5WeT0iFy7r6iqcE-OL0P?usp=sharing)
+  -[클릭](https://colab.research.google.com/drive/143rdxGKYvL3KhyWqcLLxDqX-p5QYTwse?usp=sharing)
 
 -torch25 rnn
   -[클릭](https://colab.research.google.com/drive/1SAI79ItITXIDxlVjh3i2L0hXgtGHAbLG?usp=sharing)
