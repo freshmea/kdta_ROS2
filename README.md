@@ -1,5 +1,8 @@
 # kdta_ROS2
 
+-stable-diffusion automatic1111 link
+  -[클릭](https://7860-01j27ssvah4hjzpzyyce68jp7c.cloudspaces.litng.ai)
+
 -torch41
   -[클릭](https://colab.research.google.com/drive/1uPZA9gyg3LJcHCeULHzAjaKWH4-MXbWq?usp=sharing)
 
