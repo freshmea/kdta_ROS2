@@ -1,5 +1,8 @@
 # kdta_ROS2
 
+-comfyui flux
+  -[클릭](https://8188-01j7k98v4t74v395qv8w0fftjw.cloudspaces.litng.ai)
+
 -stable-diffusion automatic1111 link
   -[클릭](https://7860-01j27ssvah4hjzpzyyce68jp7c.cloudspaces.litng.ai)
 
