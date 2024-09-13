@@ -1,5 +1,8 @@
 # kdta_ROS2
 
+- 발표자료 슬라이드 
+  - [링크](https://docs.google.com/presentation/d/1aYallCgYE6gB1hfbeIkraoRQ4baAmmQodPbweojrB1k/edit?usp=sharing)
+
 -comfyui flux
   -[클릭](https://8188-01j7k98v4t74v395qv8w0fftjw.cloudspaces.litng.ai)
 
