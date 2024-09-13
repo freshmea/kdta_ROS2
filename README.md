@@ -1,5 +1,10 @@
 # kdta_ROS2
 
+- [1조 투표](https://forms.gle/qcU2p9sjez385vs68)
+- [2조 투표](https://forms.gle/KVxwczbZj42XxyQVA)
+- [3조 투표](https://forms.gle/U1ckGvqMeSnvtEHf8)
+- [4조 투표](https://forms.gle/PoGJ9bMtYWxDMbrk9)
+
 - 발표자료 슬라이드 
   - [링크](https://docs.google.com/presentation/d/1aYallCgYE6gB1hfbeIkraoRQ4baAmmQodPbweojrB1k/edit?usp=sharing)
 
